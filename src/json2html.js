@@ -50,13 +50,13 @@ window.loadJSONTheme = themes => {
 
     themes.forEach(async t => {
         const theme = document.createElement('style');
-        theme.textContent = await (await fetch(`https://cdn.jsdelivr.net/gh/werlang/json2html@main/src/themes/${t}.min.css`)).text();
+        theme.textContent = await (await fetch(`https://cdn.jsdelivr.net/gh/werlang/json2html/src/themes/${t}.min.css`)).text();
         document.head.insertAdjacentElement('beforeend', theme);
     });
 };
 
 (async () => {
     const style = document.createElement('style');
-    style.textContent = await (await fetch('https://cdn.jsdelivr.net/gh/werlang/json2html@main/src/json2html.min.css')).text();
+    style.textContent = await (await fetch('https://cdn.jsdelivr.net/gh/werlang/json2html/src/json2html.min.css')).text();
     document.head.insertAdjacentElement('beforeend', style);
 })();
