@@ -57,6 +57,6 @@ window.loadJSONTheme = themes => {
 
 (async () => {
     const style = document.createElement('style');
-    style.textContent = await (await fetch('https://cdn.jsdelivr.net/gh/werlang/json2html/src/style.min.css')).text();
+    style.textContent = await (await fetch('https://cdn.jsdelivr.net/gh/werlang/json2html/src/json2html.min.css')).text();
     document.head.insertAdjacentElement('beforeend', style);
 })();
