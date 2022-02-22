@@ -1,0 +1,8 @@
+.json-container.theme-default_light {
+    --json-container-background: #f1f1f1;
+    --json-container-text: #000000;
+    --json-key: #0451a5;
+    --json-string: #a31515;
+    --json-number: #1a995e;
+    --json-indent: #b3c1fd;
+}

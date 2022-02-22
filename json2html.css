@@ -1,0 +1,27 @@
+.json-container {
+    word-break: break-word;
+    background-color: var(--json-container-background);
+    padding: 15px 30px;
+    display: flex;
+    flex-direction: column;
+    color: var(--json-container-text);
+    font-family: monospace;
+}
+
+.json-container .json.key {
+    color: var(--json-key);
+}
+
+.json-container .json.string {
+    color: var(--json-string);
+}
+
+.json-container .json .number {
+    color: var(--json-number);
+}
+
+.json-container .json .indent {
+    display: block;
+    padding-left: 25px;
+    border-left: 1px solid var(--json-indent);
+}
