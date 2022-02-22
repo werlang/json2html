@@ -12,8 +12,9 @@ const obj = {
     await import('https://cdn.jsdelivr.net/gh/werlang/json2html/src/json2html.min.js');
     
     const code = JSON.toHTML(obj);
-    loadJSONTheme(['default_dark', 'default_light']);
+    const JSONElement1 = document.createJSONElement(code, 'default_dark');
+    const JSONElement2 = document.createJSONElement(code, 'default_light');
 
-    document.querySelectorAll('.json-container')[0].innerHTML = code;
-    document.querySelectorAll('.json-container')[1].innerHTML = code;
+    document.body.insertAdjacentElement('beforeend', JSONElement1);
+    document.body.insertAdjacentElement('beforeend', JSONElement2);
 })();

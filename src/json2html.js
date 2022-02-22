@@ -43,17 +43,23 @@ JSON.toHTML = (json, roll) => {
     }
 };
 
-window.loadJSONTheme = themes => {
-    if (!Array.isArray(themes)){
-        themes = [ themes ];
+document.createJSONElement = async (obj, theme) => {
+    const element = document.createElement('code');
+    element.classList.add('json-container', `theme-${theme}`);
+    element.innerHTML = JSON.toHTML(obj);
+    
+    if (!document.JSONThemes){
+        document.JSONThemes = [];
+    }
+    if (!document.JSONThemes.contains(theme)){
+        document.JSONThemes.push(theme);
+        const style = document.createElement('style');
+        const url = `https://cdn.jsdelivr.net/gh/werlang/json2html/src/themes/${theme}.min.css`;
+        style.textContent = await (await fetch(url)).text();
+        document.head.insertAdjacentElement('beforeend', style);
     }
 
-    themes.forEach(async t => {
-        const theme = document.createElement('style');
-        const url = `https://cdn.jsdelivr.net/gh/werlang/json2html/src/themes/${t}.min.css`;
-        theme.textContent = await (await fetch(url)).text();
-        document.head.insertAdjacentElement('beforeend', theme);
-    });
+    return element;
 };
 
 (async () => {
