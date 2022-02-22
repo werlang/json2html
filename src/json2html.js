@@ -43,7 +43,7 @@ JSON.toHTML = (json, roll) => {
     }
 };
 
-document.createJSONElement = async (obj, theme) => {
+document.createJSONElement = (obj={}, theme='default_dark') => {
     const element = document.createElement('code');
     element.classList.add('json-container', `theme-${theme}`);
     element.innerHTML = JSON.toHTML(obj);
@@ -51,13 +51,16 @@ document.createJSONElement = async (obj, theme) => {
     if (!document.JSONThemes){
         document.JSONThemes = [];
     }
-    if (!document.JSONThemes.contains(theme)){
+    (async () => {
+        if (document.JSONThemes.includes(theme)){
+            return;
+        }
         document.JSONThemes.push(theme);
         const style = document.createElement('style');
         const url = `https://cdn.jsdelivr.net/gh/werlang/json2html/src/themes/${theme}.min.css`;
         style.textContent = await (await fetch(url)).text();
         document.head.insertAdjacentElement('beforeend', style);
-    }
+    })();
 
     return element;
 };
