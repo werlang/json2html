@@ -9,7 +9,7 @@ const obj = {
 };
 
 (async () => {
-    await import('../json2html.js');
+    await import('https://cdn.jsdelivr.net/gh/werlang/json2html/src/json2html.min.js');
     
     const code = JSON.toHTML(obj);
     loadJSONTheme(['default_dark', 'default_light']);
